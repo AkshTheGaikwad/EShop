@@ -6,7 +6,7 @@ using System.Text;
 
 namespace EShop.Core.Models
 {
-    class Product
+    public class Product
     {
         public string Id { get; set; }
         [StringLength(20)]
