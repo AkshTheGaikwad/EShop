@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShop.Core", "EShop.Core\EShop.Core.csproj", "{9FAA23EB-E8C5-40C4-B075-DC9CFF2CB9FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.DataAccess.MemoryCache", "EShop.DataAccess.MemoryCache\EShop.DataAccess.MemoryCache.csproj", "{EA2C016A-703C-466F-8017-09FD8B7A219B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShop.DataAccess.INMemoryCache", "EShop.DataAccess.MemoryCache\EShop.DataAccess.INMemoryCache.csproj", "{EA2C016A-703C-466F-8017-09FD8B7A219B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eshop.DataAccess.SQLSERVER", "Eshop.DataAccess.SQLSERVER\Eshop.DataAccess.SQLSERVER.csproj", "{C06AE168-B5E9-4870-81EA-A0B2C2681E62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eshop.DataAccess.SQLSERVER", "Eshop.DataAccess.SQLSERVER\Eshop.DataAccess.SQLSERVER.csproj", "{C06AE168-B5E9-4870-81EA-A0B2C2681E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.Services", "EShop.Services\EShop.Services.csproj", "{86277C35-39BB-47CF-88A5-B0A66926D1A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShop.Services", "EShop.Services\EShop.Services.csproj", "{86277C35-39BB-47CF-88A5-B0A66926D1A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.WebUI", "EShop.WebUI\EShop.WebUI.csproj", "{0606A7AD-EAFC-4667-B16A-DEB3BCFC7817}"
 EndProject

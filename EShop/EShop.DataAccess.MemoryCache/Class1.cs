@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EShop.DataAccess.MemoryCache
+namespace EShop.DataAccess.INMemoryCache
 {
     public class Class1
     {
