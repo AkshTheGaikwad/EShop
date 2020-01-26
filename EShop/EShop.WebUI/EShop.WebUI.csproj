@@ -182,6 +182,24 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EShop.Core\EShop.Core.csproj">
+      <Project>{9faa23eb-e8c5-40c4-b075-dc9cff2cb9fc}</Project>
+      <Name>EShop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EShop.DataAccess.MemoryCache\EShop.DataAccess.INMemoryCache.csproj">
+      <Project>{ea2c016a-703c-466f-8017-09fd8b7a219b}</Project>
+      <Name>EShop.DataAccess.INMemoryCache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Eshop.DataAccess.SQLSERVER\Eshop.DataAccess.SQLSERVER.csproj">
+      <Project>{c06ae168-b5e9-4870-81ea-a0b2c2681e62}</Project>
+      <Name>Eshop.DataAccess.SQLSERVER</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EShop.Services\EShop.Services.csproj">
+      <Project>{86277c35-39bb-47cf-88a5-b0a66926d1a1}</Project>
+      <Name>EShop.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
