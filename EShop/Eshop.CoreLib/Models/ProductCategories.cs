@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Eshop.CoreLib.Models
 {
-    public class ProductCategories
+    public class ProductCategories:BaseEntity
     {
-        public string Id { get; set; }
+       // public string Id { get; set; }
         public string CategoryName { get; set; }
 
-        public ProductCategories()
-        {
-            Id = Guid.NewGuid().ToString();
-        }
+        //public ProductCategories()
+        //{
+        //    Id = Guid.NewGuid().ToString();
+        //}
     }
 }

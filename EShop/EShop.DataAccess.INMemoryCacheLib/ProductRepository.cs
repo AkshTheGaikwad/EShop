@@ -30,12 +30,12 @@ namespace EShop.DataAccess.INMemoryCacheLib
             Cache["Products"] = products;
         }
 
-        public void AddProducts(Product prod)
+        public void Insert(Product prod)
         {
             products.Add(prod);
         }
 
-        public void UpdateProduct(Product prod)
+        public void Update(Product prod)
         {
             Product productToUpdate = products.Find(p => p.Id == prod.Id);
             if (productToUpdate != null)
@@ -47,7 +47,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
                 throw new Exception("No Product not found");
             }
         }
-        public Product FindProduct(string id)
+        public Product Find(string id)
         {
             Product productToSearch = products.Find(p => p.Id == id);
             if (productToSearch != null)
@@ -60,7 +60,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
             }
         }
 
-        public void DeleteProduct(string id)
+        public void Delete(string id)
         {
             Product productToDelete = products.Find(p => p.Id == id);
             if (productToDelete != null)

@@ -8,7 +8,7 @@ using Eshop.CoreLib.Models;
 
 namespace EShop.DataAccess.INMemoryCacheLib
 {
-   public class ProductCategoriesRepository
+   public  class ProductCategoriesRepository
     {
         ObjectCache Cache = MemoryCache.Default;
         List<ProductCategories> productCategories= new List<ProductCategories>();
@@ -35,7 +35,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
             productCategories.Add(prod);
         }
 
-        public void UpdateProductCategories(ProductCategories prod)
+        public void Update(ProductCategories prod)
         {
             ProductCategories productCategoriesToUpdate = productCategories.Find(p => p.Id == prod.Id);
             if (productCategoriesToUpdate != null)
@@ -47,7 +47,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
                 throw new Exception("Product Category not found");
             }
         }
-        public ProductCategories FindProductCategories(string id)
+        public ProductCategories Find(string id)
         {
             ProductCategories productCategoryToSearch = productCategories.Find(p => p.Id == id);
             if (productCategoryToSearch != null)
@@ -60,7 +60,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
             }
         }
 
-        public void DeleteProductCategories(string id)
+        public void Delete(string id)
         {
             ProductCategories productCategoryToDelete = productCategories.Find(p => p.Id == id);
             if (productCategoryToDelete != null)

@@ -11,13 +11,13 @@ namespace EShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        ProductRepository context;
-        ProductCategoriesRepository productCategory;
+        InMemoryCache<Product> context;
+        InMemoryCache<ProductCategories> productCategory;
 
         public ProductManagerController()
         {
-            context = new ProductRepository();
-            productCategory = new ProductCategoriesRepository();
+            context = new InMemoryCache<Product>();
+            productCategory = new InMemoryCache<ProductCategories>();
         }
         // GET: ProductManager
         public ActionResult Index()
@@ -42,8 +42,8 @@ namespace EShop.WebUI.Controllers
                 return View(product);
             }
            else  {
-                context.AddProducts(product);
-                context.commitChanges();
+                context.Insert(product);
+                context.CommitChanges();
                 return RedirectToAction("Index");
 
             }
@@ -51,7 +51,7 @@ namespace EShop.WebUI.Controllers
 
         public ActionResult Edit(string Id)
         {
-            Product product = context.FindProduct(Id);
+            Product product = context.Find(Id);
 
             if (product == null)
             {
@@ -72,7 +72,7 @@ namespace EShop.WebUI.Controllers
         public ActionResult Edit(Product product, string id)
         {
 
-            Product productToEdit = context.FindProduct(id);
+            Product productToEdit = context.Find(id);
 
             if (productToEdit == null)
             {
@@ -91,8 +91,8 @@ namespace EShop.WebUI.Controllers
                 productToEdit.Description = product.Description;
                 productToEdit.Image = product.Image;
                 productToEdit.Price = product.Price;
-                context.UpdateProduct(productToEdit);
-                context.commitChanges();
+                context.Update(productToEdit);
+                context.CommitChanges();
                 return RedirectToAction("Index");
 
                 //}
@@ -100,7 +100,7 @@ namespace EShop.WebUI.Controllers
         }
             public ActionResult Delete(string id)
             {
-                Product product = context.FindProduct(id);
+                Product product = context.Find(id);
                 if (product == null)
                 {
                     return HttpNotFound();
@@ -114,15 +114,15 @@ namespace EShop.WebUI.Controllers
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(string id)
         {
-            Product productToDelete = context.FindProduct(id);
+            Product productToDelete = context.Find(id);
             if (productToDelete == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                context.DeleteProduct(productToDelete.Id);
-                context.commitChanges();
+                context.Delete(productToDelete.Id);
+                context.CommitChanges();
                 return RedirectToAction("Index");
             }
         }
