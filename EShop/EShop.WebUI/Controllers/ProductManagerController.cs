@@ -6,15 +6,18 @@ using System.Web.Mvc;
 using Eshop.CoreLib.Models;
 using Eshop.DataAccess.SQLSERVERLib;
 using EShop.DataAccess.INMemoryCacheLib;
+using Eshop.CoreLib.ViewModels;
 namespace EShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
         ProductRepository context;
+        ProductCategoriesRepository productCategory;
 
         public ProductManagerController()
         {
-            context = new ProductRepository();  
+            context = new ProductRepository();
+            productCategory = new ProductCategoriesRepository();
         }
         // GET: ProductManager
         public ActionResult Index()
@@ -25,8 +28,11 @@ namespace EShop.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Product product = new Product();
-            return View(product);
+            ProductManagerViewModel viewModel = new ProductManagerViewModel();
+
+            viewModel.product = new Product();
+            viewModel.productCategories = productCategory.Collection();
+            return View(viewModel);
         }
 [HttpPost]
         public ActionResult Create(Product product)
@@ -46,19 +52,26 @@ namespace EShop.WebUI.Controllers
         public ActionResult Edit(string Id)
         {
             Product product = context.FindProduct(Id);
+
             if (product == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(product);
+                ProductManagerViewModel viewModel = new ProductManagerViewModel();
+
+                viewModel.product = product;
+                viewModel.productCategories = productCategory.Collection();
+                return View(viewModel);
+
             }
         }
 
         [HttpPost]
         public ActionResult Edit(Product product, string id)
         {
+
             Product productToEdit = context.FindProduct(id);
 
             if (productToEdit == null)
