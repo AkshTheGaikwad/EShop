@@ -38,7 +38,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
         public void UpdateProduct(Product prod)
         {
             Product productToUpdate = products.Find(p => p.Id == prod.Id);
-            if (productToUpdate == null)
+            if (productToUpdate != null)
             {
                 productToUpdate = prod;
             }
@@ -50,7 +50,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
         public Product FindProduct(string id)
         {
             Product productToSearch = products.Find(p => p.Id == id);
-            if (productToSearch == null)
+            if (productToSearch != null)
             {
                 return productToSearch;
             }
@@ -63,7 +63,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
         public void DeleteProduct(string id)
         {
             Product productToDelete = products.Find(p => p.Id == id);
-            if (productToDelete == null)
+            if (productToDelete != null)
             {
                 products.Remove(productToDelete);
             }

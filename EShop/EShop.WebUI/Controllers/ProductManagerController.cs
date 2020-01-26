@@ -43,9 +43,9 @@ namespace EShop.WebUI.Controllers
             }
         }
 
-        public ActionResult Edit(string productId)
+        public ActionResult Edit(string Id)
         {
-            Product product = context.FindProduct(productId);
+            Product product = context.FindProduct(Id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace EShop.WebUI.Controllers
             {
                 context.DeleteProduct(productToDelete.Id);
                 context.commitChanges();
-                return View(productToDelete);
+                return RedirectToAction("Index");
             }
         }
 
