@@ -8,7 +8,7 @@ using System.Runtime.Caching;
 
 namespace EShop.DataAccess.INMemoryCacheLib
 {
-    class ProductRepository
+    public class ProductRepository
     {
         ObjectCache Cache = MemoryCache.Default;
         List<Product> products = new List<Product>();
@@ -72,4 +72,9 @@ namespace EShop.DataAccess.INMemoryCacheLib
                 throw new Exception("Product not found");
             }
         }
+        public IQueryable<Product> Collection()
+        {
+            return products.AsQueryable<Product>();
+        }
+    }
 }
