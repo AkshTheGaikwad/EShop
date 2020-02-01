@@ -1,4 +1,5 @@
 using Eshop.CoreLib.Models;
+using Eshop.DataAccess.SQLSERVERLib;
 using EShop.CoreLib;
 using EShop.DataAccess.INMemoryCacheLib;
 using System;
@@ -45,8 +46,8 @@ namespace EShop.WebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<ICache<Product>, InMemoryCache<Product>>();
-            container.RegisterType<ICache<ProductCategories>, InMemoryCache<ProductCategories>>();
+            container.RegisterType<ICache<Product>, SQLRepositorycs<Product>>();
+            container.RegisterType<ICache<ProductCategories>, SQLRepositorycs<ProductCategories>>();
         }
     }
 }
