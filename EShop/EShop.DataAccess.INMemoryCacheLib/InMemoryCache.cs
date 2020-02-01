@@ -5,21 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Caching;
 using Eshop.CoreLib.Models;
+using EShop.CoreLib;
 
 namespace EShop.DataAccess.INMemoryCacheLib 
 {
-   public  class InMemoryCache<T> where T: BaseEntity
+    public class InMemoryCache<T> : ICache<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
         string className;
-        
+
 
         public InMemoryCache()
         {
             className = typeof(T).Name;
-            items =cache[className] as List<T>;
-            if(items==null)
+            items = cache[className] as List<T>;
+            if (items == null)
             {
                 items = new List<T>();
             }
@@ -27,12 +28,12 @@ namespace EShop.DataAccess.INMemoryCacheLib
 
         public void CommitChanges()
         {
-            cache [className]= items;
+            cache[className] = items;
         }
 
-        public void Insert (T t)
+        public void Insert(T t)
         {
-            if(t!= null)
+            if (t != null)
             {
                 items.Add(t);
             }
@@ -45,7 +46,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
         public T Find(string id)
         {
             T tToSearch = items.Find(t => t.Id == id);
-            if (tToSearch==null)
+            if (tToSearch == null)
             {
                 throw new Exception(className + "Not found");
             }
@@ -56,7 +57,7 @@ namespace EShop.DataAccess.INMemoryCacheLib
         }
         public void Update(T t)
         {
-            T tToUpdate = items.Find(i => i.Id ==t.Id);
+            T tToUpdate = items.Find(i => i.Id == t.Id);
             if (tToUpdate == null)
             {
                 throw new Exception(className + "Not found");
@@ -67,12 +68,12 @@ namespace EShop.DataAccess.INMemoryCacheLib
             }
         }
 
-        public IQueryable<T> Collection ()
+        public IQueryable<T> Collection()
         {
             return items.AsQueryable();
         }
 
-        public void Delete (string id)
+        public void Delete(string id)
         {
             T tToDelete = items.Find(t => t.Id == id);
             if (tToDelete == null)

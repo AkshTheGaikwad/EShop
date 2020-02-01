@@ -5,17 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using EShop.DataAccess.INMemoryCacheLib;
 using Eshop.CoreLib.Models;
+using EShop.CoreLib;
 
 namespace EShop.WebUI.Controllers
 {
     public class ProductCategoriesManagerController : Controller
     {
         // GET: ProductCategoriesManager
-        InMemoryCache<ProductCategories> context;
+        ICache<ProductCategories> context;
 
-        public ProductCategoriesManagerController()
+        public ProductCategoriesManagerController(ICache<ProductCategories> productCategoriesContext)
         {
-            context = new InMemoryCache<ProductCategories>();
+            context = productCategoriesContext;
         }
         // GET: ProductManager
         public ActionResult Index()

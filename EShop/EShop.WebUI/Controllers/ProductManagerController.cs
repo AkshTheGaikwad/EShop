@@ -7,17 +7,19 @@ using Eshop.CoreLib.Models;
 using Eshop.DataAccess.SQLSERVERLib;
 using EShop.DataAccess.INMemoryCacheLib;
 using Eshop.CoreLib.ViewModels;
+using EShop.CoreLib;
+
 namespace EShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        InMemoryCache<Product> context;
-        InMemoryCache<ProductCategories> productCategory;
+        ICache<Product> context;
+        ICache<ProductCategories> productCategory;
 
-        public ProductManagerController()
+        public ProductManagerController(ICache<Product> productContext, ICache<ProductCategories> productCategoryContext)
         {
-            context = new InMemoryCache<Product>();
-            productCategory = new InMemoryCache<ProductCategories>();
+            context = productContext;
+            productCategory = productCategoryContext;
         }
         // GET: ProductManager
         public ActionResult Index()
